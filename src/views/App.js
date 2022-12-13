@@ -1,5 +1,5 @@
 import "./App.scss";
-
+import TestComponent from "./example/TestComponent";
 function App() {
   return (
     <div className="App">
@@ -15,6 +15,7 @@ function App() {
         >
           Learn React
         </a>
+        <TestComponent></TestComponent>
       </header>
     </div>
   );
