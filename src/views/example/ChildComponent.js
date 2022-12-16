@@ -8,13 +8,19 @@ class ChildComponent extends React.Component {
 
   render() {
     // let name = this.props.name;
-    let { name, classroom, age } = this.props;
+    let { name, classroom, age, arrayDev } = this.props;
     // biến đặt phải trùng với name props khai báo
     return (
       <>
         <div>
-          {this.props.name} học React JS - Lớp: {classroom} - Tuổi:
-          {age}
+          {arrayDev.map((item, index) => {
+            console.log(">>> item: ", item, ">>> index: ", index);
+            return (
+              <div key={item.id}>
+                {item.jobs} - {item.salary}$
+              </div>
+            );
+          })}
         </div>
       </>
     );

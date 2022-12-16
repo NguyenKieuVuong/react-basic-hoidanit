@@ -4,6 +4,23 @@ class TestComponent extends React.Component {
   state = {
     firstName: "",
     lastName: "",
+    arrayDev: [
+      {
+        id: 1,
+        jobs: "frontend dev",
+        salary: "600",
+      },
+      {
+        id: 2,
+        jobs: "backend dev",
+        salary: "800",
+      },
+      {
+        id: 3,
+        jobs: "project manager",
+        salary: "1200",
+      },
+    ],
   };
   handleChangeFirstName = (event) => {
     this.setState({
@@ -43,9 +60,12 @@ class TestComponent extends React.Component {
             Submit
           </button>
         </div>
-        <ChildComponent name={"Huệ"} classroom={"IT"} age={"20"} />
-        <ChildComponent name={"Hiếu"} classroom={"Giáo viên"} age={"22"} />
-        <ChildComponent name={"Lân"} classroom={"Giáo viên IT"} age={"23"} />
+        <ChildComponent
+          name={"Huệ"}
+          classroom={"IT"}
+          age={"20"}
+          arrayDev={this.state.arrayDev}
+        />
       </>
     );
   }
