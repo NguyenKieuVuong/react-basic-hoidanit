@@ -1,9 +1,8 @@
 import React from "react";
 import ChildComponent from "./ChildComponent";
+import AddComponent from "./AddComponent";
 class TestComponent extends React.Component {
   state = {
-    firstName: "",
-    lastName: "",
     arrayDev: [
       {
         id: 1,
@@ -22,49 +21,45 @@ class TestComponent extends React.Component {
       },
     ],
   };
-  handleChangeFirstName = (event) => {
+  addAJobs = (job) => {
+    console.log("variable job: ", job);
+    // let arrayclone = this.state.arrayDev;
     this.setState({
-      firstName: event.target.value,
+      //arrayDev: this.state.arrayDev.push(job),
+      arrayDev: [...this.state.arrayDev, job],
     });
   };
-  handleChangeLastName = (event) => {
-    this.setState({ lastName: event.target.value });
-  };
-  handleSubmit = () => {
-    console.log(">>> this state: ", this.state);
+  deleteARows = (id) => {
+    let newArray = this.state.arrayDev;
+    newArray = newArray.filter((item, index) => item.id !== id);
+    // this.setState({
+    //   arrayDev: newArray,
+    // });
+    // for (let i = 0; i < newArray.length; i++) {
+    //   console.log("i: ", [i]);
+    //   console.log("newArray[i].id: ", newArray[i].id);
+    //   if (newArray[i].id == id) newArray.splice([i], 1);
+    // }
+
+    //console.log("id: ", id);
+    //newArray.splice(id, 1);
+    //console.log("newArray: ", newArray);
+    this.setState({
+      arrayDev: newArray,
+    });
+    //console.log("arrayDev: ", this.state.arrayDev);
   };
   render() {
     return (
       <>
-        <div>
-          <label htmlFor="fname">First name:</label>
-          <br />
-          <input
-            type="text"
-            id="fname"
-            value={this.state.firstName}
-            onChange={(event) => this.handleChangeFirstName(event)}
-          />
-          <br />
-          <label htmlFor="lname">Last name:</label>
-          <br />
-          <input
-            type="text"
-            id="lname"
-            value={this.state.lastName}
-            onChange={(event) => this.handleChangeLastName(event)}
-          />
-          <br />
-          <br />
-          <button type="button" onClick={() => this.handleSubmit()}>
-            Submit
-          </button>
-        </div>
+        <AddComponent addAJobs={this.addAJobs}></AddComponent>
+
         <ChildComponent
           name={"Huệ"}
           classroom={"IT"}
           age={"20"}
           arrayDev={this.state.arrayDev}
+          deleteARows={this.deleteARows}
         />
       </>
     );

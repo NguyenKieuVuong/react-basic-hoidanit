@@ -5,7 +5,10 @@ class ChildComponent extends React.Component {
     firstName: "",
     lastName: "",
   };
-
+  pushAIDRow = (id) => {
+    console.log("id: ", id);
+    this.props.deleteARows(id);
+  };
   render() {
     // let name = this.props.name;
     let { name, classroom, age, arrayDev } = this.props;
@@ -14,10 +17,11 @@ class ChildComponent extends React.Component {
       <>
         <div>
           {arrayDev.map((item, index) => {
-            console.log(">>> item: ", item, ">>> index: ", index);
+            //console.log(">>> item: ", item, ">>> index: ", index);
             return (
               <div key={item.id}>
-                {item.jobs} - {item.salary}$
+                {item.jobs} - {item.salary}$&nbsp;
+                <span onClick={(id) => this.pushAIDRow(item.id)}>X</span>
               </div>
             );
           })}
