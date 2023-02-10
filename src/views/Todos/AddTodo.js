@@ -3,6 +3,7 @@ class AddTodo extends React.Component {
   state = {
     title: "",
   };
+
   handleOnChangeTitle = (event) => {
     this.setState({
       title: event.target.value,
@@ -18,11 +19,11 @@ class AddTodo extends React.Component {
     };
     this.props.addNewTodo(todo);
     this.setState({
-      title: " ",
+      title: "",
     });
   };
   render() {
-    let title = this.title;
+    let { title } = this.state;
     return (
       <div className="add-todo">
         <input
